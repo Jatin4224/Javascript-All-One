@@ -78,3 +78,16 @@ Sometimes, we need to fix the precision for our decimal numbers. For example, we
   const exactValue = 4.34167;
 const fixedValue = exactValue.toFixed(2);
 console.log(fixedValue);
+
+
+Get Numbers From String
+The parseInt() function extracts an integer from a string.
+
+The parseInt() function converts each character in the string to integer, until it encounters a non-numerical value.
+
+It returns NaN if the string does not start with a numerical value, +, -, or 0X.
+
+  const boxHeightString = "123px";
+const boxHeightValue = parseInt(boxHeightString);
+console.log(boxHeightValue);
+
