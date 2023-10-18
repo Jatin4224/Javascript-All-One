@@ -72,3 +72,9 @@ const max = 20;
 
 console.log(Math.floor(Math.random() * (max - min + 1)) + min);
 */
+
+Fix Precision of Decimal Numbers
+Sometimes, we need to fix the precision for our decimal numbers. For example, we might need 2.43519 to be represented as 2.44. The toFixed() method fixes the number of digits after the decimal point.
+  const exactValue = 4.34167;
+const fixedValue = exactValue.toFixed(2);
+console.log(fixedValue);
