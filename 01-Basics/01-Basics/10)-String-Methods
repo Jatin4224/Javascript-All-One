@@ -1,0 +1,93 @@
+Accessing string characters 
+Length 
+toUpperCase & toLowerCase 
+trim() ✂
+padStart() for padding 
+padEnd() 
+Finding the index of a character 
+Searching for a string with includes() 
+startsWith() & endsWith() 
+slice() 
+Replacing a substring with replace() 
+Splitting a string with split() 
+toString() vs. String() 
+
+
+//examples 
+Accessing string characters:
+
+const str = 'Hello, World!';
+console.log(str[0]); // Output: 'H'
+console.log(str[7]); // Output: 'W'
+
+Length:
+
+const str = 'JavaScript';
+console.log(str.length); // Output: 10
+
+
+toUpperCase & toLowerCase:
+const text = 'MixedCase';
+console.log(text.toUpperCase()); // Output: 'MIXEDCASE'
+console.log(text.toLowerCase()); // Output: 'mixedcase'
+
+
+trim():
+
+const text = '   Hello, World!   ';
+const trimmedText = text.trim();
+console.log(trimmedText); // Output: 'Hello, World!'
+
+padStart() for padding:
+
+const number = '42';
+const paddedNumber = number.padStart(5, '0');
+console.log(paddedNumber); // Output: '00042'
+
+padEnd():
+
+const value = '7';
+const paddedValue = value.padEnd(3, '0');
+console.log(paddedValue); // Output: '700'
+
+Finding the index of a character:
+
+const str = 'Hello, World!';
+const index = str.indexOf('W');
+console.log(index); // Output: 7
+
+Searching for a string with includes():
+
+const sentence = 'This is a sample sentence.';
+const containsWord = sentence.includes('sample');
+console.log(containsWord); // Output: true
+
+startsWith() & endsWith():
+
+const str = 'Hello, World!';
+console.log(str.startsWith('Hello')); // Output: true
+console.log(str.endsWith('World!')); // Output: true
+
+
+const text = 'JavaScript';
+const slicedText = text.slice(4, 7);
+console.log(slicedText); // Output: 'Scr'
+Replacing a substring with replace():
+
+const sentence = 'I love JavaScript!';
+const updatedSentence = sentence.replace('JavaScript', 'coding');
+console.log(updatedSentence); // Output: 'I love coding!'
+
+Splitting a string with split():
+
+const names = 'John, Jane, James';
+const nameArray = names.split(', ');
+console.log(nameArray); // Output: ['John', 'Jane', 'James']
+
+toString() vs. String():
+
+const num = 42;
+const numAsString = num.toString();
+const numFromString = String(num);
+console.log(numAsString); // Output: '42'
+console.log(numFromString); // Output: '42'
