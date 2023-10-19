@@ -1,0 +1,5 @@
+Spread Operator
+The spread operator, denoted using triple dots like ..., can be used to expand an iterable, such as an array or a string, into arguments that can be passed into a function, or elements that can be inserted into an array.
+const numbers = [1, 2, 3, 50, 12]
+const maxNum = Math.max(...numbers);
+console.log(maxNum);
