@@ -26,3 +26,18 @@ filter() accepts a function as an argument. It invokes that function on each ele
 const numbers = [1, 2, 3, 4, 5, 6];
 const evenNumbers = numbers.filter(number => number % 2 === 0);
 console.log(evenNumbers);
+
+
+Find element of an Array
+The find() method accepts a test function as an argument, and executes the test function on each element of the array it is invoked on.
+
+The value of first element of the array that passes the test function is returned.
+
+The find() method returns undefined, in case no matching elements are found.
+  const people = [
+  {name:"sam", age: 17},
+  {name:"Adam", age: 19},
+  {name:"Smith", age: 21}
+];
+const isAdult = people.find(person => person.age >= 18);
+console.log(isAdult);
