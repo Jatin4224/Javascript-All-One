@@ -70,3 +70,16 @@ The delete() method removes the key-value pair for the provided key from a map. 
 
 Remove All Elements From the Map
 The map.clear() method removes all the properties from the Map.
+
+
+Create a Map From an Object
+We can use the Object.entries() method to create a Map that contains all the properties of an object.
+const user = {
+  name: "Sam Smith",
+  age: 32,
+}
+
+const userMap = new Map(Object.entries(user));
+
+console.log(user);
+console.log(userMap);
