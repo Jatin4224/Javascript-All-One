@@ -1,0 +1,11 @@
+Set is a collection of unique values. It can store values of any type.
+const fruits = new Set(["apple", "orange", "mango"]);
+console.log(fruits);
+
+
+
+Sets are very similar to Arrays. One main difference between Sets and Arrays is that a Set can only contain unique values. Arrays can have duplicate elements.
+const fruits = new Set(["apple", "orange", "mango", "apple", "grape"]);
+console.log(fruits);
+
+
