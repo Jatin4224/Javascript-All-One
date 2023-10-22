@@ -59,3 +59,7 @@ const mapWithRandomProps = new Map([
 
 const doesMapHaveNameKey = mapWithRandomProps.has("name");
 console.log(doesMapHaveNameKey);
+
+
+Size of the Map
+The map.size method returns the number of properties in the Map.
