@@ -40,3 +40,8 @@
    ```
 
 In summary, `new Map()` is used to create a new Map object, while `map.set()` is a method used to add or update key-value pairs within an existing Map. Both are integral parts of working with JavaScript Maps, which are versatile for storing and managing data in a structured manner.
+
+
+
+Fetch Data From a Map
+The map.get() method returns the value of a key. We need to pass the key as argument. If the key is not present, it returns undefined
