@@ -45,3 +45,17 @@ In summary, `new Map()` is used to create a new Map object, while `map.set()` is
 
 Fetch Data From a Map
 The map.get() method returns the value of a key. We need to pass the key as argument. If the key is not present, it returns undefined
+
+
+Check if Map has Your Data
+The map.has() method can be used to check if a Map has a property with the given key.
+
+The map.has() method takes one argument - the key to be searched for. The map.has() method returns true if the key exists and false if it doesn't.
+const mapWithRandomProps = new Map([
+  ["name", "Sam Smith"],
+  [true, "Property with boolean key"],
+  [12.34, "Property with float key"],
+]);
+
+const doesMapHaveNameKey = mapWithRandomProps.has("name");
+console.log(doesMapHaveNameKey);
