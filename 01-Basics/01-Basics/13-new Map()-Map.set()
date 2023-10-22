@@ -67,3 +67,6 @@ The map.size method returns the number of properties in the Map.
 
 Delete Data From the Map
 The delete() method removes the key-value pair for the provided key from a map. The delete() method returns true if a property with that key exists and it was able to delete that property. If a property with that key does not exist, it returns false.
+
+Remove All Elements From the Map
+The map.clear() method removes all the properties from the Map.
