@@ -109,4 +109,13 @@ NOTE-The rest operator must always come last. Otherwise it will cause an error.
 
 /////Named Parameters//////////
 
+const getBalance = ({income, expense = 0, tax = 0}) => {
+  console.log(income - (expense + tax))
+};
 
+
+const updated = {
+  income: 100000,
+  tax: 3000
+}
+getBalance(updated)
