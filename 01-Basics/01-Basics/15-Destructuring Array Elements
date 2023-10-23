@@ -32,3 +32,26 @@ console.log(firstFruit);
 console.log(thirdFruit);
 
 
+Destructuring arrays with Rest Operator
+If the number of array elements is more than the number of variables provided in destructuring, the other elements are omitted.
+
+example- 
+const fruits = ["Apple", "Orange", "Mango", "Banana", "Grape"];
+
+const [firstFruit, secondFruit] = fruits;
+console.log(firstFruit);
+console.log(secondFruit);
+
+We can use the rest operator, i.e., three dots ... to store all the omitted elements as an array.
+
+example-
+const fruits = ["Apple", "Orange", "Mango", "Banana", "Grape"];
+
+const [firstFruit, secondFruit, ...otherFruits] = fruits;
+console.log(firstFruit);
+console.log(secondFruit);
+console.log(otherFruits);
+
+
+Note-
+The rest operator must always come last in the list of variables. Otherwise, it will cause an error.
