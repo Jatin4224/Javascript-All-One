@@ -23,3 +23,12 @@ console.log(secondFruit);
 console.log(thirdFruit);
 
 
+Ignoring Elements
+While destructuring, we might want to ignore some elements of the array.
+example-
+const fruits = ["Apple", "Orange", "Mango"];
+const [firstFruit, , thirdFruit] = fruits;
+console.log(firstFruit);
+console.log(thirdFruit);
+
+
