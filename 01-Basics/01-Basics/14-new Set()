@@ -9,3 +9,11 @@ const fruits = new Set(["apple", "orange", "mango", "apple", "grape"]);
 console.log(fruits);
 
 
+Adding Values to Set
+The add() method can be used to add a value to the end of a Set.
+const truthyValues = new Set(["apple", 1234, true]);
+
+truthyValues.add(56.78);
+truthyValues.add("apple");
+
+console.log(truthyValues);
