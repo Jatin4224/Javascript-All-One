@@ -1,1 +1,66 @@
+Object Destructuring
+Object destructuring allows us to copy the value of properties of objects and store them in other variables.
 
+example-
+const person = {
+  fullName: "Adam Smith",
+  age: 37,
+  isAdmin: true
+};
+
+const { age, fullName, isAdmin } = person;
+console.log(`${fullName} is ${age} years old. Are they an admin? ${isAdmin}.`);
+
+Renaming Destructured Property
+Consider the following example:
+const fruit = {
+  name: "apple",
+  color: "red",
+}
+
+const animal = {
+  name: "horse",
+  color: "brown",
+}
+
+const { name, color } = fruit;
+const { name, color } = animal;
+
+n the example given above, we have two objects fruit and animal with keys of the same names name and color. When destructuring these objects and storing the values in separate variables we get an error because we cannot have two variables named name as well as two variables named color.
+
+We can use a colon : to specify another name for the variable in which the value of a property from a destructured object is stored.
+
+Let's rewrite the above example:
+const fruit = {
+  name: "apple",
+  color: "red",
+}
+
+const animal = {
+  name: "horse",
+  color: "brown",
+}
+
+const { name: fruitName, color: fruitColor } = fruit;
+const { name: animalName, color: animalColor } = animal;
+
+console.log(`The ${animalColor} ${animalName} eats a ${fruitColor} ${fruitName}`);
+
+
+
+
+The ability to rename destructured properties is useful in cases where the key name of an object is not a valid variable name, as shown in the example given below:
+example-
+const user = {
+  "full-name": "Sam Smith",
+}
+
+const { "full-name" } = user;
+we get an error because "full-name" is not a valid variable name. So we need to rename the destructured property to a valid variable name
+
+const user = {
+  "full-name": "Sam Smith",
+}
+
+const { "full-name": fullName } = user;
+console.log(fullName);
