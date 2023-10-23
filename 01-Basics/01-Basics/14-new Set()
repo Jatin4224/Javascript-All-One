@@ -17,3 +17,8 @@ truthyValues.add(56.78);
 truthyValues.add("apple");
 
 console.log(truthyValues);
+
+Checking if Value Exists in Set
+The has() method can be used to check if a given element is present in a set.
+
+The has() method takes the element to be searched for as the argument. It returns true if the element is found in the set. Otherwise, it returns false.
