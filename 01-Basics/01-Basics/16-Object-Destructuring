@@ -64,3 +64,46 @@ const user = {
 
 const { "full-name": fullName } = user;
 console.log(fullName);
+
+
+Destructuring with Computed Properties
+Consider the following example:
+
+const person = {
+  12: "Adam",
+  13: "Samantha"
+};
+
+const keyName = 12;
+const { [keyName]: twelfthPerson } = person;
+
+console.log(twelfthPerson);
+
+Note that we renamed the destructured property because 12 is not a valid variable name.
+
+Similarly, we can also destructure properties using expressions
+example-
+const person = {
+  12: "Adam",
+  13: "Samantha"
+};
+
+const { [3 * 4]: twelfthPerson } = person; // Same as { 12: twelfthPerson } = person
+
+console.log(twelfthPerson);
+
+The Rest Pattern
+exaxmple-
+const person = {
+  name: "Adam Smith",
+  email: "adam@example.com",
+  phone: "911234567890"
+};
+
+const { name, ...contactInfo } = person;
+console.log(name);
+console.log(contactInfo);
+
+
+NOTE-The rest operator must always come last. Otherwise it will cause an error.
+
