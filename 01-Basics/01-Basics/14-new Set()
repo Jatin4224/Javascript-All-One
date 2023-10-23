@@ -29,3 +29,23 @@ The size property returns the number of elements in the Set.
 
 const names = new Set(["Sam", "Oliver", "Adam"]);
 console.log(names.size);
+
+Deleting Values From a Set
+The delete() method removes an element from a Set.
+
+The delete() method takes the value of the element to be deleted as argument. If it finds the element inside the set and deletes the element, it returns true. It returns false if it was unable to find the element in the set.
+const names = new Set(["Sam", "Oliver", "Adam"]);
+
+if (names.delete("Adam")) {
+  console.log(names);
+} else {
+  console.log("Could not find Adam in names");
+}
+
+
+Deleting All Values From a Set
+The clear() method removes all the elements from a set.
+const names = new Set(["Sam", "Oliver", "Adam"]);
+names.clear();
+console.log(names);
+
