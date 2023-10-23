@@ -107,3 +107,6 @@ console.log(contactInfo);
 
 NOTE-The rest operator must always come last. Otherwise it will cause an error.
 
+/////Named Parameters//////////
+
+
