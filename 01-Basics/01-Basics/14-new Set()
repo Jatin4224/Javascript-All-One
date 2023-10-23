@@ -22,3 +22,10 @@ Checking if Value Exists in Set
 The has() method can be used to check if a given element is present in a set.
 
 The has() method takes the element to be searched for as the argument. It returns true if the element is found in the set. Otherwise, it returns false.
+
+
+Checking Number of Elements in Set
+The size property returns the number of elements in the Set.
+
+const names = new Set(["Sam", "Oliver", "Adam"]);
+console.log(names.size);
