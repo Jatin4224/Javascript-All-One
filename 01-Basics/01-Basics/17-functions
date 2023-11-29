@@ -44,3 +44,86 @@ function addTwoNumbers(number1, number2) {
 
   return number1 + number2
 }
+
+//scope - later
+
+
+//new function 
+
+function loginUserMessage(username) {
+  return `${username} just logged in`
+}
+
+loginUserMessage("jatin")
+//op-kuch print nahi hoga return krdya par store to kara nahi variable m na print kra
+
+function loginUserMessage(username) {
+  return `${username} just logged in`
+}
+
+console.log(loginUserMessage("jatin"));
+
+
+
+//imp interview question what will be th eop if -
+console.log(loginUserMessage());
+//ans - undefined 
+
+//function with object and array in javasdcript 
+
+//making cart
+function calculateCartPrice(num1) {
+  return num1
+}
+
+console.log(calculateCartPrice(20, 40, 50))
+//OP- 20 
+//to problem solve this problem we use - rest operator...
+
+
+function calculateCartPrice(...num1) {
+  return num1
+}
+
+console.log(calculateCartPrice(20, 40, 50))
+//op - [20 , 40 , 50]
+
+
+
+//imp -interview question - what is output?
+
+
+function calculateCartPrice(val1, val2, ...num1) {
+  return num1
+}
+
+console.log(calculateCartPrice(20, 40, 50, 2000))
+//ans- [50, 2000] //because 20 nd 40 val1 val2 legye 
+
+
+//object nd function 
+const user = {
+  username: "jatin",
+  price: 200
+}
+
+function handleObject(anyobject) {
+  console.log(`usernmae is ${anyobject.username} and price is ${anyobject.price}`);
+}
+
+handleobject(user))
+
+//we can pass direclty also 
+handleobject({
+  username: "jatin",
+    price: 200
+})
+
+//passing array 
+const myNewArray = [20, 40 , 50, 60]
+
+function returnSecondValue(getArray) {
+  //myNewArray mt likhdena focus on argument only 
+  return getArray[1]
+}
+console.log(returnSecondValue(myNewArray));
