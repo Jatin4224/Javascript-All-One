@@ -127,3 +127,46 @@ function returnSecondValue(getArray) {
   return getArray[1]
 }
 console.log(returnSecondValue(myNewArray));
+
+
+
+
+
+//Global and local scope{} in javascript
+
+// let a = 10;
+// const b = 120;
+// var c = 30;
+
+if (true) {
+  let a = 10;
+  const b = 120;
+  var c = 30;
+}
+
+console.log(a);
+console.log(b);
+console.log(c);
+
+//output 
+// console.log(a) not dedfined 
+// console.log(b) not defined 
+//30 //isliye hi var bekaar hota h use nahi karte usko 
+
+//the code under if is block scope and outer one is global scope 
+
+let a = 300;
+if (true) {
+  let a = 10;
+  console.log("inner:", a);
+}
+console.log(a);
+//op -
+// inner: 10
+// 300
+
+
+
+//interview question -
+ // window scope which checked in browser console is different and which is checked in terminal node is different
+
