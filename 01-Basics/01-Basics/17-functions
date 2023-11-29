@@ -1,0 +1,46 @@
+//function 
+
+function sayMyName() {
+  console.log("jatin")
+}
+
+
+//calling function 
+sayMyName()
+
+
+
+//add two numbers 
+function addTwoNumbers(number1, number2) {
+  console.log(number1 + number2);
+}
+addTwoNumbers(3, 4);//OP-7
+addTwoNumbers(3, "4");
+addTwoNumbers(3, null);
+addTwoNumbers(3, a);
+
+
+//i can store addTwoNumbers inside the variable .
+
+
+const result = addTwoNumbers(3, 5)
+console.log(result)//undefined - imp concept 
+//concept -
+//console likhne ka mtlb yh  nahi h ki function vahi return kr raha h console and return alg c
+
+//writing function again 
+
+function addTwoNumbers(number1, number2) {
+  let result = (number1 + number2);
+  return result
+  console.log("jatin")//yh kabhi execute nahi hoga - func rule return k bd nhi hota khc execute 
+}
+const result = addTwoNumbers(3, 5)
+console.log(result);
+
+
+//one more easy way 
+function addTwoNumbers(number1, number2) {
+
+  return number1 + number2
+}
