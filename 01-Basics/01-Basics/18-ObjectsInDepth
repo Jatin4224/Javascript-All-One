@@ -1,0 +1,41 @@
+//objects in js 
+//singleton-koi bhi constructor se bnao vo singleton khte h if asked in interview just tell when we declare objects in literal tab singleton m nahi bnta h .
+
+//object.create  //through constructor 
+
+//object literals
+
+
+const JsUser = {
+  name: "jatin",
+  "fullname": "jatin sharma"
+  age: 21,
+  location: "kota",
+  email: "jatin@gmail.com",
+  isLoggedIn: false
+}
+
+// access Objects
+console.log(JsUser.email) //this is not good way because 
+console.log(JsUser.fullname) //we cannot access this 
+//good way 
+console, log(JsUser["fullname"])
+
+
+//interview question - take symbol add to object key and print it 
+
+
+const mySymbol = symbol("key1")
+
+const Js = {
+  mySymbol: "mykey1"
+}
+//data type - string but humko to symbol chahiye 
+
+// correct ans-
+const Js = {
+  [mySymbol]: "mykey1"
+}
+
+//acces symbol
+console.log(Js[mySymbol])
