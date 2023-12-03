@@ -39,3 +39,28 @@ const Js = {
 
 //acces symbol
 console.log(Js[mySymbol])
+
+/changing object values
+
+JsUser.email = "jatin@yahoo.com"
+
+//value lock (no one can change the value)
+
+Object.freeze(JsUser)
+JsUser.email = "jatin@cahtgpt.com"
+console.log(JsUser)//no change 
+
+//function treated same as variable 
+JsUser.greeting = function() {
+  console.log("hello Js User");
+}
+JsUser.greetingTwo = function() {
+  console.log(`Hello Js user, ${this.name}`);
+}
+
+console.log(JsUser.greeting); //op-function(anonymous)
+console.log(JsUser.greeting());//op-hello js user
+
+console.log(JsUser.greetingTwo());//op- Hello Js user, jatin
+
+//imp note - we usually acces values with . but sometimes in special cases we have to use []
