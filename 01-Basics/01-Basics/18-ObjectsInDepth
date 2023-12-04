@@ -64,3 +64,50 @@ console.log(JsUser.greeting());//op-hello js user
 console.log(JsUser.greetingTwo());//op- Hello Js user, jatin
 
 //imp note - we usually acces values with . but sometimes in special cases we have to use []
+
+
+
+//json 
+const course = {
+  coursenmae: "js in hindi",
+price: "99",
+courseInstructor: "jatin"
+}
+
+
+// course.courseInstructor 
+//one more syntax 
+const {courseInstructor: instructor} = course
+
+console.log(courseInstructor); 
+console.log(instructor);
+//same output for both 
+
+//same concept of destructring comes in react.
+
+// example-
+//we cannot do props.company etc instead we use this syntax 
+// const navbar = ({company}) => {
+  
+// }
+// navbar(company = "jatin")
+
+
+//Api concept 
+//values come in form of json 
+
+{
+  "name": "jatin",
+  "coursename": "js in hindi",
+   " price" : "99"
+}
+
+//many times we get api not in form of object but in form of arrays 
+//google- randomeuserme api 
+//use json formater tool 
+
+[
+  {}
+  {}
+  {}
+]
