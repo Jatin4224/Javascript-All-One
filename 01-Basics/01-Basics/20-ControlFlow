@@ -1,0 +1,128 @@
+// //if
+
+// if (condition) {
+// }
+// if (true) {
+//   //to hi yh code execute hoga
+// }
+// if (false) {
+//   // code execute hoga
+// }
+
+// if (2 == 2) {
+//   console.log("2 is equal to 2");
+// }
+
+// const isUserLoggedIn = true;
+// if (isUserLoggedIn) {
+// }
+
+// //>,<,<=,>=,==,===(it checks type also),!=,!==
+
+// if (2 == "2") {
+//   console.log("executed");
+// }
+// //op-executed
+
+// if (2 === "2") {
+//   console.log("executed");
+// }
+// //op-nothing
+
+// //it is beneficial for strict checking
+
+// const temp = 40
+// if(temp < 50) {
+//   console.log("lees than 50");}
+// console.log("temp is greater than 50")
+
+// //else
+
+// const score = 200
+// if(score > 100) {
+//   const power = "fly"
+//   //var power = "fly"//yh bhar niklega scope k global h isliye do not use
+//   console.log(`user power: ${power}`);
+
+// }
+
+// console.log(`user power: ${power}`);
+
+//very immature code:
+// const balance =  1000
+// if (balance > 500) console.log("test");
+// console.log("test2");
+
+//nesting - to check multiple conditions
+
+// const balance = 600;
+// if (balance < 500) {
+//   console.log("less than ");
+// } else if (balance < 750) {
+//   console.log("less than 750");
+// } else if (balance < 900) {
+//   console.log("less than 750");
+// } else {
+//   console.log("less than 1200");
+// }
+
+//&operator
+// const userLoggedIn = true;
+// const debitCard = true;
+// if (userLoggedIn && debitCard) {
+//   console.log("Allow to buy course");
+// }
+//-op-Allow to buy course
+
+// const userLoggedIn = true;
+// const debitCard = true;
+// if (userLoggedIn && debitCard && 2 == 3) {
+//   console.log("Allow to buy course");
+// }
+//op-nothing if any one condition is false in & operator we dont get the rsult
+// The logical AND (&&) (logical conjunction) operator for a set of boolean operands will be true if and only if all the operands are true. Otherwise it will be false.
+
+//2.OR || operator: The logical OR ( || ) (logical disjunction) operator for a set of operands is true if and only if one or more of its operands is true. It is typically used with boolean (logical) values
+
+// const userLoggedIn = true;
+// const debitCard = true;
+// const loggedInFromGoogle = false;
+// const loggedInFromEmail = true;
+// if (userLoggedIn && debitCard) {
+//   console.log("Allow to buy course");
+// }
+
+// //multiple condition check
+// if (loggedInFromEmail || loggedInFromGoogle) {
+//   console.log("user logged in ");
+// }
+
+//switch: The switch statement evaluates an expression, matching the expression's value against a series of case clauses, and executes statements after the first case clause with a matching value, until a break statement is encountered (except default). The default clause of a switch statement will be jumped to if no case matches the expression's value.
+
+//syntax
+// key- jis value ko check karna h
+// switch(key) {
+//   case value;
+
+//     break;
+
+//   default:
+//     break;
+// }
+
+const month = 2;
+switch (month) {
+  case 1:
+    console.log("january");
+    break;
+  case 2:
+    console.log("feb");
+    break;
+  case 3:
+    console.log("march");
+    break;
+
+  default:
+    console.log("default case match");
+    break;
+}
