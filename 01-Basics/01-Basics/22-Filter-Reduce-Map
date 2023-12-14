@@ -1,1 +1,143 @@
+//Map,reduce and filter
 
+// 1.FIlter : The filter() method of Array instances creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided functio
+
+// example- const words = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
+
+//   const result = words.filter((word) => word.length > 6);
+
+//   console.log(result);
+// Expected output: Array ["exuberant", "destruction", "present"]
+
+// const coding = ["js", "ruby", "java", "python", "cpp"];
+
+// const values = coding.forEach((item) => {
+//   console.log(item);
+//   return item;
+// // });
+
+// // console.log(values);
+
+// const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const newNums = myNums.filter((num) => num > 4);
+// console.log(newNums);
+//op- [5,6,7,8,9,10]
+
+//imp very imp - Q)a find the mistake in this code
+// const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const newNums = myNums.filter((num) => {
+//   num > 4); }
+// console.log(newNums);
+//op- []
+// -ans we miss to wrtie  return
+// correct code -
+
+// const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const newNums = myNums.filter((num) => {
+//   return num > 4;
+// });
+
+// console.log(newNums);
+
+// //using forEach loop for writing same code
+// const newNums = [];
+
+// myNums.forEach((num) => {
+//   if (num > 4) {
+//     newNums.push(num);
+//   }
+// });
+
+// const books = [
+// { title: "Book one", genre: "Fiction", publish: 1981, edition: 2004 },
+// { title: "Book Two", genre: "non-Fiction", publish: 1982, edition: 2008 },
+// { title: "Book Three", genre: "History", publish: 1983, edition: 2012 },
+// { title: "Book Four", genre: "non-fiction", publish: 1984, edition: 2016 },
+// { title: "Book Five", genre: "science", publish: 1985, edition: 2018 },
+// { title: "Book six", genre: "Fiction", publish: 1986, edition: 2020 },
+// { title: "Book seven", genre: "History", publish: 2003, edition: 2024 },
+// { title: "Book Eight", genre: "Fiction", publish: 2000, edition: 2028 },
+// ];
+
+// user wants those books who genre - history
+// let userBooks = books.filter((bk) => bk.genre === "History");
+
+//user wants book whose publise date  > = 2000
+// userBooks = books.filter((bk) => {
+//  return bk.publish >= 2000;
+// });
+
+// console.log(userBooks);
+
+//user wants book whose publise date  > = 1995 and genre history
+
+// userBooks = books.filter((bk) => {
+//   return bk.publish >= 2000 && bk.genre === "History";
+// });
+
+// console.log(userBooks);
+
+//Map:The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.
+// const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const newNums = myNumbers.map((num) => num + 10);
+// console.log(newNums);
+
+//chaining
+
+// const newNums = myNumbers
+//   .map((num) => num * 10)
+//   .map((num) => num + 1)
+//   .filter((num) => num >= 40);
+
+// console.log(newNums);
+
+//reduce:The reduce() method of Array instances executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+// const array1 = [1, 2, 3, 4];
+
+// // 0 + 1 + 2 + 3 + 4
+// const initialValue = 0;
+// const sumWithInitial = array1.reduce(
+//   (accumulator, currentValue) => accumulator + currentValue,
+//   initialValue,
+// );
+
+// console.log(sumWithInitial);
+// // Expected output: 10
+
+// const myNums = [1, 2, 3];
+// const myTotal = myNums.reduce(function (acc, currval) {
+//   console.log(`acc: ${acc} and currVal: ${currval}`);
+//   return acc + currval;
+// }, 0);
+
+// onst myTotal = myNums.reduce((acc, curr) => acc + curr, 0);
+// console.log(myTotal);c
+
+//Q -> add all the prices on the shopping cart
+const shoppingCart = [
+  {
+    itemName: "js cource",
+    price: 2999,
+  },
+  {
+    itemName: "py cource",
+    price: 999,
+  },
+  {
+    itemName: "c++ cource",
+    price: 9999,
+  },
+  {
+    itemName: "data science cource",
+    price: 12999,
+  },
+];
+
+const priceTopay = shoppingCart.reduce((acc, item) => acc + item.price, 0);
+
+console.log(priceTopay);
