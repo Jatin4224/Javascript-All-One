@@ -1,0 +1,148 @@
+// How to Use Promises to Escape Callback Hell
+// -Promises were invented to solve the problem of callback hell and to better handle our tasks.
+// A promise is not an empty object; instead, it is an object representing the eventual completion or failure of an asynchronous operation and its resulting value. A promise can be in one of three states:
+
+// Pending: The initial state; the promise is neither fulfilled nor rejected.
+// Fulfilled: The operation completed successfully, and the promise has a resulting value.
+// Rejected: The operation failed, and the promise has a reason for the failure.
+// Promises are typically used for handling asynchronous operations, such as fetching data from a server or reading a file. They provide a cleaner and more structured way to work with asynchronous code compared to traditional callback patterns.
+
+// Define an array representing items in a shopping cart
+const cart = ["shoes", "pants", "kurtas"];
+
+// Call the createOrder function with the cart and a callback function that takes orderId as a parameter
+createOrder(cart, function (orderId) {
+  proceedToPayment(orderId);
+});
+// In this line, the createOrder function is asynchronously creating an order with the items in the cart.
+// It takes a callback function as its second parameter, which will be invoked with the orderId once the order is created.
+// The orderId is then used as an argument to the proceedToPayment function.
+
+// Create a promise using the createOrder function and pass the cart as an argument
+const promise = createOrder(cart);
+// This line creates a promise using the createOrder function. The promise will be resolved with the orderId once the order is created.
+
+// Attach a callback function to the promise using the then method
+// The callback function takes orderId as a parameter and invokes the proceedToPayment function with that orderId
+promise.then(function (orderId) {
+  proceedToPayment(orderId);
+});
+// In this line, a callback function is attached to the promise using the then method.
+// This callback function will be executed when the promise is resolved, and it takes the orderId as a parameter.
+// The proceedToPayment function is then called with the obtained orderId.
+
+
+
+Q: How it is better than callback approach?
+
+In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
+
+But with promise, we are attaching a callback function to a promiseObject.
+
+There is difference between these words, passing a function and attaching a function.
+
+Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only once. Just once.
+
+Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than that.
+
+Now let's understand and see a real promise object.
+
+
+fetch is a web-api which is utilized to make api call and it returns a promise.
+
+
+We will be calling public github api to fetch data:  https://api.github.com/users/jatin4224
+const URL = "https://api.github.com/users/jatin4224";
+const user = fetch(URL);
+// User above will be a promise.
+console.log(user); // Promise {<Pending>}
+
+/** OBSERVATIONS:
+ * If we will deep dive and see, this `promise` object has 3 things
+ * `prototype`, `promiseState` & `promiseResult`
+ * & this `promiseResult` is the same data which we talked earlier as data
+ * & initially `promiseResult` is `undefined`
+ *
+ * `promiseResult` will store data returned from API call
+ * `promiseState` will tell in which state the promise is currently, initially it will be in `pending` state and later it will become `fulfilled`
+ */
+
+/**
+ * When above line is executed, `fetch` makes API call and return a `promise` instantly which is in `Pending` state and Javascript doesn't wait to get it `fulfilled`
+ * And in next line it console out the `pending promise`.
+ * NOTE: chrome browser has some in-consistency, the moment console happens it shows in pending state but if you will expand that it will show fulfilled because chrome updated the log when promise get fulfilled.
+ * Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
+ */
+
+//now what if we have some callback attached .then?
+
+const URL = "https://api.github.com/users/alok722";
+const user = fetch(URL);
+
+user.then(function (data) {
+  console.log(data);
+});
+// And this is how Promise is used.
+// It guarantees that it could be resolved only once, either it could be `success` or `failure`
+/**
+    A Promise is in one of these states:
+
+    pending: initial state, neither fulfilled nor rejected.
+    fulfilled: meaning that the operation was completed successfully.
+    rejected: meaning that the operation failed.
+ */
+
+
+//interview questions
+
+💡What is Promise?
+-> Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.
+
+-> A container for a future value.
+
+-> A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+
+We are now done solving one issue of callback i.e. Inversion of Control
+
+//but there is one more issue - callback hell
+
+// Callback Hell Example
+createOrder(cart, function (orderId) {
+  proceedToPayment(orderId, function (paymentInf) {
+    showOrderSummary(paymentInf, function (balance) {
+      updateWalletBalance(balance);
+    });
+  });
+});
+// And now above code is expanding horizontally and this is called pyramid of doom.
+// Callback hell is ugly and hard to maintain.
+
+// 💡 Promise fixes this issue too using `Promise Chaining`
+// Example Below is a Promise Chaining
+createOrder(cart)
+  .then(function (orderId) {
+    proceedToPayment(orderId);
+  })
+  .then(function (paymentInf) {
+    showOrderSummary(paymentInf);
+  })
+  .then(function (balance) {
+    updateWalletBalance(balance);
+  });
+
+// ⚠️ Common PitFall
+// We forget to return promise in Promise Chaining
+// The idea is promise/data returned from one .then become data for next .then
+// So,
+createOrder(cart)
+  .then(function (orderId) {
+    return proceedToPayment(orderId);
+  })
+  .then(function (paymentInf) {
+    return showOrderSummary(paymentInf);
+  })
+  .then(function (balance) {
+    return updateWalletBalance(balance);
+  });
+
+// To improve readability you can use arrow function instead of regular function
