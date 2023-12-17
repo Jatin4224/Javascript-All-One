@@ -1,0 +1,81 @@
+//1.callback Hell
+
+console.log("hello");
+
+//we need to print this function after 5seconds so we will wrap it inside the callback function and passit to setTimeout
+setTimeout(function () {
+  console.log("Javascript");
+}, 5000);
+
+console.log("hello again");
+
+//one more example
+//suppose we are creating eccommerce website
+const cart = ["shoes", "pants", "kurta"];
+
+//now we need to
+// 1.create ab order
+// 2.proceed to payment
+
+//how we will write this in code ?
+//suppose if we have exccess to two backend API's :
+
+// api.createOrder()
+// api.proceedToPayment()
+
+//we will wrap it insdie the callback function
+api.createOrder(cart, function () {
+  api.proceedTopayment();
+});
+
+//we have pass this callback function to createOrder now its responsibilty of api to create an order and call the callback back
+
+//now we have to show our ordersummary page
+
+// 1.create ab order
+// 2.proceed to payment
+// 3.ordersummary
+
+// we have abnother api
+api.showOrderSummary();
+
+//so now we will again wrap it inside the callback function and pass this callback function into proceedToPayment api
+
+api.createOrder(cart, function () {
+  api.proceedTopayment(function () {
+    api.showOrderSumamry();
+  });
+});
+
+// so now we created the order ,payement and ordersummary
+
+// after that we want to update the wallet
+
+// 1.create ab order
+// 2.proceed to payment
+// 3.ordersummary
+// 4.update the wallet
+
+//we have another api for that
+api.updateWallet();
+
+//so now we will again wrap it inside the callback function and pass this callback function into showOrderSumamry api
+
+api.createOrder(cart, function () {
+  api.proceedTopayment(function () {
+    api.showOrderSumamry(function () {
+      api.updateWallet();
+    });
+  });
+});
+
+//so this is know as callback Hell and code starts growing horizontaly this structure is very unReadable &  unmaintainable
+//this structue is also known as pyramid of doom.
+
+//so this is the first problem we faced while using callbacks and the second problem we face is
+
+// 2.inversion of control
+// Inversion of Control (IoC) is an abstract programming principle based on the flow of control (execution of statements/instructions) that should be fully managed by the specific implementation of the framework, which is external to your code.
+
+//have u noticed in our code we take the callback function and give to to createorder api and we are blindly trusting this api .
+// its risky because we give the control of the program to createorderapi and we dont know create order api is working properly or not what if our function never called or called twice .
