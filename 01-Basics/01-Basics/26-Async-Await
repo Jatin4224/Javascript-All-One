@@ -1,325 +1,260 @@
-//synchronous code
-// // console.log("i");
-// console.log("eat ");
-// console.log("icecream");
-// console.log("with as");
-// console.log("spoon");
+// Topics Covered
 
-const { rejects } = require("assert");
-const { time } = require("console");
+// What is async?
+// What is await?
+// How async await works behind the scenes?
+// Example of using async/await
+// Error Handling
+// Interviews
+// Async await vs Promise.then/.catch
+// Q: What is async?
+// A: Async is a keyword that is used before a function to create a async function.
 
-//js runs from top to bottom in htios
-
-//asynchronous system
-// console.log("i");
-// console.log("eat ");
-
-// setTimeout(() => {
-//   console.log("ice cream");
-// }, 3000);
-// console.log("with as");
-// console.log("spoon");
-// //regular funtion
-// function abc(a, b, c, d) {}
-
-//Arrow function
-// let abc = (a, b, c, d) => {}//
-
-//callbacks
-// calling a function isnide another function is call back it forms connection between functions
-
-// function one() {
-//   console.log(" step 1");
+//what is async function ?lets create it
+// 1.this async function always returns a promise
+// 2 cases
+// case 1. either u written a promise
+// async function getData() {
+//   return Promise
 // }
 
-// function two() {
-//   console.log("step 2");
+//case 2 if u dont written a promise from here - suppose u written a value
+
+// async function getData() {
+//   return "jasavscript"
+// }
+//what this function do is ti will take this value and wrao it inside promise and return a promise
+
+//so this function alwaysb return a promise
+
+//now lets call this function
+
+// async function getData() {
+//   return "jasavscript"
 // }
 
-// one();
-// two();
+// const dataPromise = getData();
+// console.log(dataPromise);
+//op- promise {'jasavscript'}
 
-//op -
-// step 1
-// step 2
+//now how ill get javascipt out of the promise
 
-// but if u reverse the order
-// two();
-// one();
+// we use .then method
 
-//op-
-//step 1
-//step 2
+// dataPromise.then((res) => console.log(res));
 
-//now we are going to make connection betweeen this two functions
+//now to remember its always return a promise in any case keep in mind for interviews
 
-// function one(call_two) {
-//   call_two();
-//   console.log("step 1 complete.please call step 2");
+//now lets see example of returning a promise we have seen returning value already
+
+//lets create promise
+// const p = new Promise ((resolve, rejecet)) => {
+//   resolve("Promise Resolved values");
+// }
+// //now we have this promise lets try to return this promise
+
+// async function getData() {
+//   return p;
 // }
 
-// function two() {
-//   console.log("step2");
+// const dataPromise = getData();
+// dataPromise.then((res) => console.log(res));
+
+//now lets see how we can use await along with async and how we can handle actual promises
+
+//async and await combo used to handle promises but before async await how we use promises and why do we need async await lets see how we handle promises before async await
+
+// const p = new Promise((resolve, reject) => {
+//   resolve("Promise Resolved values");
+// });
+
+// function getData() {
+//   p.then((res) => console.log(res));
 // }
-// one(two);
 
-//lets build ice cream
+// getData();
 
-// let order = (call_production) => {
-//   call_production();
-// };
+//lets see how we can handle this using async /await
 
-//now we get order we start the production v
-// let production = () => {};
+// const p = new Promise((resolve, reject) => {
+//   resolve("Promise Resolved values");
+// });
 
-//now we have build the realtion between this two functions using callbacks
-//lets test it
+// async function handlePromise() {
+//   const val = await p;
+//   console.log(val);
+// }
+// handlePromise();
 
-// let order = (call_production) => {
-//   console.log("order placed, please call production");
-//   call_production();
-// };
+//await is the keyword that is only be used inside a async funtion.
+//and u write await keyword in front of promise
 
-// let production = () => {
-//   console.log("order received, starting production");
-// };
+//nnow lets see very imp difference between normaly handling and handling using async await
+//deep dive into async await
 
-//run the function
-// order(production);
-
-//realtion btwn frontend and backend
-// store room -> back-end
-// kitchen -> front-end
-
-//now we are gonnas store our incredients inside an object
-
-// let stocks = {
-//   Fruits: ["strawberry", "grapes", "banana", "apple"],
-//   liquid: ["water", "ice"],
-//   holder: ["cone", "cup", "stick"],
-//   toppings: ["chocolate", "peanuts"],
-// };
-//selecting one stock
-
-// console.log(stocks.Fruits[2]);
-
-//now the first thing is customer can place order which means customer can pic anything so we need variable
-
-// let order = (Fruit_name, call_production) => {
+// const p = new Promise((resolve, reject) => {
 //   setTimeout(() => {
-//     console.log(`${stocks.Fruits[Fruit_name]} was selected`);
-//   }, 2000);
-//   call_production();
-// };
+//     resolve("Promise Resolved values");
+//   }, 10000);
+// });
 
-// let production = () => {
-//   setTimeout(() => {
-//     console.log("production has started");
-//   }, 0000);
-// };
-
-// order(0, production);
-//0 means index sonwe get the strawbeery
-
-//if we put 1 we will get grapes
-
-// We'll nest another setTimeout function in our existing setTimeout function to chop the fruit.
-// let production = () =>{
-
-//   setTimeout(()=>{
-//     console.log("production has started")
-
-//     setTimeout(()=>{
-//       console.log("The fruit has been chopped")
-//     },2000)
-
-//   },0000)
-// };
-// order(0, production);
-
-//now the 3rd step si to add water and ice and it takes the 1 second
-
-// let production = () => {
-//   setTimeout(() => {
-//     console.log("production has started");
-
-//     setTimeout(() => {
-//       console.log("The fruit has been chopped");
-
-//       setTimeout(()=>{
-//         console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} was added`)
-//       }, 1000)
-//     }, 2000);
-//   }, 0000);
-// };
-// order(0, production);
-
-// lets complete all steps
-// 4.now we start the machine
-// 5.select container
-// 6.select toppings
-// 7.serve icecream
-
-// let production = () => {
-//   setTimeout(() => {
-//     console.log("production has started");
-//     setTimeout(() => {
-//       console.log("The fruit has been chopped");
-//       setTimeout(() => {
-//         console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} Added`);
-//         setTimeout(() => {
-//           console.log("start the machine");
-//           setTimeout(() => {
-//             console.log(`Ice cream placed on ${stocks.holder[1]}`);
-//             setTimeout(() => {
-//               console.log(`${stocks.toppings[0]} as toppings`);
-//               setTimeout(() => {
-//                 console.log("serve Ice cream");
-//               }, 2000);
-//             }, 3000);
-//           }, 2000);
-//         }, 1000);
-//       }, 1000);
-//     }, 2000);
-//   }, 0);
-// };
-
-//this is known as callback hell .
-
-// and the solution of callbacks -
-//   promises-
-
-//callbacks form relationships grand children gran grand childern...
-// but what promises do they give instructions first do this then then then it works like this so u can make yr code clean
-
-// a promise has three states:
-
-// Pending: This is the initial stage. Nothing happens here. Think of it like this, your customer is taking their time giving you an order. But they haven't ordered anything yet.
-// Resolved: This means that your customer has received their food and is happy.
-// Rejected: This means that your customer didn't receive their order and left the restaurant.
-
-//       promise
-//          |
-// resolve ---  reject
-//    |            |
-// .then          .catch
-//    |              |
-//  .then            |
-//     |             |
-//       \         /
-// .finally
-
-//Promise chaining
-// In this method, we defining what we need to do when the first task is complete using the .then handler.
-// The .then handler returns a promise when our original promise is resolved.
-// Note: don't forget to write the return word inside your .then handler. Otherwise, it won't work properly. If you're curious, try removing the return once we finish the steps:
-
-let stocks = {
-  Fruits: ["strawberry", "grapes", "banana", "apple"],
-  liquid: ["water", "ice"],
-  holder: ["cone", "cup", "stick"],
-  toppings: ["chocolate", "peanuts"],
-};
-
-// create a variable
-let is_shop_open = true;
-
-let order = (time, work) => {
-  return new Promise((resolve, reject) => {
-    if (is_shop_open) {
-      setTimeout(() => {
-        resolve(work());
-      }, time);
-    } else {
-      reject("Our shop is closed");
-    }
-  });
-};
-
-// Promise chaining
-order(2000, () => console.log(`${stocks.Fruits[0]} was selected `))
-  // step 2
-  .then(() => order(0000, () => console.log("Production has started")))
-
-  // step 3
-  .then(() => order(2000, () => console.log("Fruit has been chopped")))
-
-  // step 4
-  .then(() =>
-    order(1000, () =>
-      console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} added`),
-    ),
-  )
-
-  // step 5
-  .then(() => order(1000, () => console.log("Start the machine")))
-
-  // step 6
-  .then(() =>
-    order(2000, () => console.log(`Ice cream placed on ${stocks.holder[1]}`)),
-  )
-
-  // step 7
-  .then(() =>
-    order(3000, () => console.log(`${stocks.toppings[0]} as toppings`)),
-  )
-
-  // Step 8
-  .then(() => order(2000, () => console.log("Serve Ice Cream")))
-
-  // handle errors
-  // .catch((error) => console.log(error));
-
-  // //error handlin
-  // .catch(() => {
-  //   console.log("customer left");
-  // });
-  .catch(() => {
-    console.log("customer left");
-  });
-
-//There's something called the finally handler which works regardless of whether our promise was resolved or rejected.
-
-//async/await
-
-// This is supposed to be the better way to write promises and it helps us keep our code simple and clean.
-
-// All you have to do is write the word async before any regular function and it becomes a promise.
-
-let stocks = {
-  Fruits: ["strawberry", "grapes", "banana", "apple"],
-  liquid: ["water", "ice"],
-  holder: ["cone", "cup", "stick"],
-  toppings: ["chocolate", "peanuts"],
-};
-
-// create a variable
-let is_shop_open = true;
-
-// Promises vs Async/Await in JavaScript
-
-// function order(){
-//    return new Promise( (resolve, reject) =>{
-// if() {
-//   resolve()
+// async function handlePromise() {
+//   const val = await p;
+//   console.log(val);
 // }
-//    else {
-//      reject()
-//    }
-//     )
+// handlePromise();
+
+// function getData() {
+//   p.then((res) => console.log(res));
+//   console.log("javascript");
 // }
 
-// Now using async/await, we write one like this:
+// getData();
+//javascript will be printed first  then the promise will be resolved after 10 seconds
 
-//👇 the magical keyword
-async function order() {
+//it will keep the callbck functions and it will not wait promise to be resolved it will jsut mvoe on to the next lione and oprint javascript
+
+// now lets see what happens in async await
+
+// async function handlePromise() {
+//   console.log("hello world "); //printed quickly
+//   const val = await p; //program waits 10seconds
+//   console.log("javascript ");
+//   console.log(val);
+
+//   //what happend now?interview questions
+//   //after 10 seconds both promises will be printed
+//   const val2 = await p;
+//   console.log("javascript ");
+//   console.log(val2);
+// }
+// handlePromise();
+//so basically js engine is waiting for promise to be resolved and ones the promise is resolved it will wait and it will only got to the next line ones the promise is resolved
+
+//now lets make things more complicated lets make two promises now
+
+// const p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise Resolved values");
+//   }, 10000);
+// });
+
+// const p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise Resolved values");
+//   }, 5000);
+// });
+
+// //what happend now?interview questions - waht will happen now -
+// async function handlePromise() {
+//   console.log("hello world "); //printed quickly
+//   const val = await p1; //program waits 10seconds
+//   console.log("javascript ");
+//   console.log(val);
+
+//   const val2 = await p2;
+//   console.log("javascript ");
+//   console.log(val2);
+// }
+// handlePromise();
+
+//after 5seconds nothing will be printed but after 10 seconds both printed
+
+//lets see one more example now i will reverse the order
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Promise Resolved values");
+  }, 5000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Promise Resolved values");
+  }, 10000);
+});
+
+//what happend now?interview questions - waht will happen now -
+async function handlePromise() {
+  console.log("hello world "); //printed quickly
+  const val = await p1; //program waits 10seconds
+  console.log("javascript ");
+  console.log(val);
+
+  const val2 = await p2;
+  console.log("javascript ");
+  console.log(val2);
+}
+handlePromise();
+
+// When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.
+
+// call stack flow -> handlePromise() is pushed -> It will log `Hi` to console -> Next it sees we have await where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack? No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -> But this time it will start executing from where it had left. -> Now it will log 'Hello There!' and 'Promise resolved value!!' -> then it will check whether `p2` is resolved or not -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
+
+//  Thus JS is not waiting, call stack is not getting blocked.
+
+// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -> even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.
+
+//Real life example but before that lets
+//lets deep dive and understand more fetch()
+
+async function handlePromise() {
+  // fetch() => Response Object which as body as Readable stream => Response.json() is also a promise which when resolved => value
+  const data = await fetch("https://api.github.com/users/jatin4224"); //waited this line to be rsolved
+  const res = await data.json(); //waited this data json to be resolved
+  console.log(res);
+}
+handlePromise();
+
+//Error handling
+//here we use try catch to handle errors
+
+async function handlePromise() {
   try {
-    await abc; //pointed out to function which doesnt exist
-  } catch (error) {
-    console.log("abc does't exist ");
-  } finally {
-    console.log("runs code anyways");
+    const data = await fetch("https://api.github.com/users/jatin4224");
+    const res = await data.json();
+    console.log(res);
+  } catch (err) {
+    console.log(err);
   }
 }
+handlePromise();
 
-order();
+// In above whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.
+
+// Other way of handling error:
+handlePromise().catch((err) => console.log(err)); // this will work as handlePromise will return error promise in case of failure.
+
+// now what is the  api url is invalid
+
+async function handlePromise() {
+  try {
+    const data = await fetch("https://invalid");
+    const res = await data.json();
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+}
+handlePromise();
+
+handlePromise().catch((err) => console.log(err));
+
+//we got the error and then it did not go to the next line 
+// and it quickly jump on to catch block and we got the err and this err says type error failed to catch .
+
+
+  //one more way to handle errors 
+
+  // they use older way 
+  handlePromise().catch(err) => console.log(err));
+
+
+//interviews tips 
+// first type of question is waht is async await ?
+//   -tell them waht we hve learned in this blog 
+// explain them with examples 
+// if required trying to explain promise also 
+
+//Async/await vs Promise.then/catch 
+// What one should use? async-await is just a syntactic sugar around promise. Behind the scene async-await is just promise. So both are same, it's just async-await is new way of writing code. async-await solves few of the short-coming of Promise like Promise Chaining. async-await also increases the readability. So sort of it is always advisable to use async-await.
