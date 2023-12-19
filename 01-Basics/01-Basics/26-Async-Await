@@ -1,0 +1,325 @@
+//synchronous code
+// // console.log("i");
+// console.log("eat ");
+// console.log("icecream");
+// console.log("with as");
+// console.log("spoon");
+
+const { rejects } = require("assert");
+const { time } = require("console");
+
+//js runs from top to bottom in htios
+
+//asynchronous system
+// console.log("i");
+// console.log("eat ");
+
+// setTimeout(() => {
+//   console.log("ice cream");
+// }, 3000);
+// console.log("with as");
+// console.log("spoon");
+// //regular funtion
+// function abc(a, b, c, d) {}
+
+//Arrow function
+// let abc = (a, b, c, d) => {}//
+
+//callbacks
+// calling a function isnide another function is call back it forms connection between functions
+
+// function one() {
+//   console.log(" step 1");
+// }
+
+// function two() {
+//   console.log("step 2");
+// }
+
+// one();
+// two();
+
+//op -
+// step 1
+// step 2
+
+// but if u reverse the order
+// two();
+// one();
+
+//op-
+//step 1
+//step 2
+
+//now we are going to make connection betweeen this two functions
+
+// function one(call_two) {
+//   call_two();
+//   console.log("step 1 complete.please call step 2");
+// }
+
+// function two() {
+//   console.log("step2");
+// }
+// one(two);
+
+//lets build ice cream
+
+// let order = (call_production) => {
+//   call_production();
+// };
+
+//now we get order we start the production v
+// let production = () => {};
+
+//now we have build the realtion between this two functions using callbacks
+//lets test it
+
+// let order = (call_production) => {
+//   console.log("order placed, please call production");
+//   call_production();
+// };
+
+// let production = () => {
+//   console.log("order received, starting production");
+// };
+
+//run the function
+// order(production);
+
+//realtion btwn frontend and backend
+// store room -> back-end
+// kitchen -> front-end
+
+//now we are gonnas store our incredients inside an object
+
+// let stocks = {
+//   Fruits: ["strawberry", "grapes", "banana", "apple"],
+//   liquid: ["water", "ice"],
+//   holder: ["cone", "cup", "stick"],
+//   toppings: ["chocolate", "peanuts"],
+// };
+//selecting one stock
+
+// console.log(stocks.Fruits[2]);
+
+//now the first thing is customer can place order which means customer can pic anything so we need variable
+
+// let order = (Fruit_name, call_production) => {
+//   setTimeout(() => {
+//     console.log(`${stocks.Fruits[Fruit_name]} was selected`);
+//   }, 2000);
+//   call_production();
+// };
+
+// let production = () => {
+//   setTimeout(() => {
+//     console.log("production has started");
+//   }, 0000);
+// };
+
+// order(0, production);
+//0 means index sonwe get the strawbeery
+
+//if we put 1 we will get grapes
+
+// We'll nest another setTimeout function in our existing setTimeout function to chop the fruit.
+// let production = () =>{
+
+//   setTimeout(()=>{
+//     console.log("production has started")
+
+//     setTimeout(()=>{
+//       console.log("The fruit has been chopped")
+//     },2000)
+
+//   },0000)
+// };
+// order(0, production);
+
+//now the 3rd step si to add water and ice and it takes the 1 second
+
+// let production = () => {
+//   setTimeout(() => {
+//     console.log("production has started");
+
+//     setTimeout(() => {
+//       console.log("The fruit has been chopped");
+
+//       setTimeout(()=>{
+//         console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} was added`)
+//       }, 1000)
+//     }, 2000);
+//   }, 0000);
+// };
+// order(0, production);
+
+// lets complete all steps
+// 4.now we start the machine
+// 5.select container
+// 6.select toppings
+// 7.serve icecream
+
+// let production = () => {
+//   setTimeout(() => {
+//     console.log("production has started");
+//     setTimeout(() => {
+//       console.log("The fruit has been chopped");
+//       setTimeout(() => {
+//         console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} Added`);
+//         setTimeout(() => {
+//           console.log("start the machine");
+//           setTimeout(() => {
+//             console.log(`Ice cream placed on ${stocks.holder[1]}`);
+//             setTimeout(() => {
+//               console.log(`${stocks.toppings[0]} as toppings`);
+//               setTimeout(() => {
+//                 console.log("serve Ice cream");
+//               }, 2000);
+//             }, 3000);
+//           }, 2000);
+//         }, 1000);
+//       }, 1000);
+//     }, 2000);
+//   }, 0);
+// };
+
+//this is known as callback hell .
+
+// and the solution of callbacks -
+//   promises-
+
+//callbacks form relationships grand children gran grand childern...
+// but what promises do they give instructions first do this then then then it works like this so u can make yr code clean
+
+// a promise has three states:
+
+// Pending: This is the initial stage. Nothing happens here. Think of it like this, your customer is taking their time giving you an order. But they haven't ordered anything yet.
+// Resolved: This means that your customer has received their food and is happy.
+// Rejected: This means that your customer didn't receive their order and left the restaurant.
+
+//       promise
+//          |
+// resolve ---  reject
+//    |            |
+// .then          .catch
+//    |              |
+//  .then            |
+//     |             |
+//       \         /
+// .finally
+
+//Promise chaining
+// In this method, we defining what we need to do when the first task is complete using the .then handler.
+// The .then handler returns a promise when our original promise is resolved.
+// Note: don't forget to write the return word inside your .then handler. Otherwise, it won't work properly. If you're curious, try removing the return once we finish the steps:
+
+let stocks = {
+  Fruits: ["strawberry", "grapes", "banana", "apple"],
+  liquid: ["water", "ice"],
+  holder: ["cone", "cup", "stick"],
+  toppings: ["chocolate", "peanuts"],
+};
+
+// create a variable
+let is_shop_open = true;
+
+let order = (time, work) => {
+  return new Promise((resolve, reject) => {
+    if (is_shop_open) {
+      setTimeout(() => {
+        resolve(work());
+      }, time);
+    } else {
+      reject("Our shop is closed");
+    }
+  });
+};
+
+// Promise chaining
+order(2000, () => console.log(`${stocks.Fruits[0]} was selected `))
+  // step 2
+  .then(() => order(0000, () => console.log("Production has started")))
+
+  // step 3
+  .then(() => order(2000, () => console.log("Fruit has been chopped")))
+
+  // step 4
+  .then(() =>
+    order(1000, () =>
+      console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} added`),
+    ),
+  )
+
+  // step 5
+  .then(() => order(1000, () => console.log("Start the machine")))
+
+  // step 6
+  .then(() =>
+    order(2000, () => console.log(`Ice cream placed on ${stocks.holder[1]}`)),
+  )
+
+  // step 7
+  .then(() =>
+    order(3000, () => console.log(`${stocks.toppings[0]} as toppings`)),
+  )
+
+  // Step 8
+  .then(() => order(2000, () => console.log("Serve Ice Cream")))
+
+  // handle errors
+  // .catch((error) => console.log(error));
+
+  // //error handlin
+  // .catch(() => {
+  //   console.log("customer left");
+  // });
+  .catch(() => {
+    console.log("customer left");
+  });
+
+//There's something called the finally handler which works regardless of whether our promise was resolved or rejected.
+
+//async/await
+
+// This is supposed to be the better way to write promises and it helps us keep our code simple and clean.
+
+// All you have to do is write the word async before any regular function and it becomes a promise.
+
+let stocks = {
+  Fruits: ["strawberry", "grapes", "banana", "apple"],
+  liquid: ["water", "ice"],
+  holder: ["cone", "cup", "stick"],
+  toppings: ["chocolate", "peanuts"],
+};
+
+// create a variable
+let is_shop_open = true;
+
+// Promises vs Async/Await in JavaScript
+
+// function order(){
+//    return new Promise( (resolve, reject) =>{
+// if() {
+//   resolve()
+// }
+//    else {
+//      reject()
+//    }
+//     )
+// }
+
+// Now using async/await, we write one like this:
+
+//👇 the magical keyword
+async function order() {
+  try {
+    await abc; //pointed out to function which doesnt exist
+  } catch (error) {
+    console.log("abc does't exist ");
+  } finally {
+    console.log("runs code anyways");
+  }
+}
+
+order();
